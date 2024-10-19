@@ -1,4 +1,6 @@
+import ChatPage from "@/screens/home/chat/Chat";
 import HomeScreen from "@/screens/home/Home";
+import ProfilePage from "@/screens/home/profile/Profile";
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../layout/MainLayout";
 import ErrorPage from "../screens/error/Error";
@@ -21,6 +23,14 @@ const router = createBrowserRouter([
   {
     path: "/home",
     element: <HomeScreen />,
+  },
+  {
+    path: "/profile",
+    element: <ProfilePage />,
+  },
+  {
+    path: "/chat",
+    element: <ChatPage />,
   },
   {
     path: "*",

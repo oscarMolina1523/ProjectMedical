@@ -7,12 +7,13 @@ import {
 } from "@/components/ui/card";
 import React from "react";
 import { Link } from "react-router-dom";
+import QrReader from "../Scanner/Scanner";
 
-interface BodyHomeProps{
+interface BodyHomeProps {
   onFormClick: () => void;
 }
 
-const BodyHome: React.FC<BodyHomeProps> = ({onFormClick}) => {
+const BodyHome: React.FC<BodyHomeProps> = ({ onFormClick }) => {
   return (
     <div className="flex flex-col p-2 gap-4">
       <Card>
@@ -30,21 +31,22 @@ const BodyHome: React.FC<BodyHomeProps> = ({onFormClick}) => {
       <Card>
         <CardDescription className="p-2">Completa el formulario para seguir cuidando tu piel</CardDescription>
         <CardContent>
-        <Button className="h-[2.5rem] text-[1.2rem] bg-dark-blue">
-          <div onClick={onFormClick} className="flex items-center justify-center h-full w-full">
-            Formulario
-          </div>
-        </Button>
+          <Button className="h-[2.5rem] text-[1.2rem] bg-dark-blue">
+            <div onClick={onFormClick} className="flex items-center justify-center h-full w-full">
+              Formulario
+            </div>
+          </Button>
         </CardContent>
       </Card>
       <Card>
         <CardDescription className="p-2">Escanear un producto</CardDescription>
         <CardContent>
-        <Button className="h-[2.5rem] text-[1.2rem] bg-dark-blue">
-          <Link to="/formulario" className="flex items-center justify-center h-full w-full">
-            Escaner
-          </Link>
-        </Button>
+          <Button className="h-[2.5rem] text-[1.2rem] bg-dark-blue">
+            <Link to="/formulario" className="flex items-center justify-center h-full w-full">
+              Escaner
+            </Link>
+          </Button>
+          <QrReader />
         </CardContent>
       </Card>
     </div>

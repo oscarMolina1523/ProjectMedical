@@ -7,13 +7,13 @@ import MenuBar from "./menuBar/MenuBar";
 const HomeScreen: React.FC = () => {
   const [clickMenu, setClickMenu]=useState<boolean>(false);
   const [clickForm, setClickForm]=useState<boolean>(false);
+
   const handleMenu=()=>{
     setClickMenu(prevState => !prevState)
   }
   const handleForm=()=>{
     setClickForm(prevState => !prevState)
   }
-
 
   return (
     <div className="div">

@@ -1,6 +1,7 @@
 import { Input } from '@/components/ui/input';
 import { Menu, MessageSquare, User } from 'lucide-react';
 import React from "react";
+import { Link } from "react-router-dom";
 
 interface HeaderProps{
   clickMenu: () => void;
@@ -16,12 +17,12 @@ const HeaderHome: React.FC<HeaderProps> = ({clickMenu}) => {
       <div className="div">
         <Input className="h-[2rem] rounded-full" type="text" placeholder="search...." />
       </div>
-      <div className="div">
+      <Link to="/chat" className="div">
         <MessageSquare className="h-6 w-6 text-black ml-2" />
-      </div>
-      <div className="div">
+      </Link>
+      <Link to="/profile" className="div">
         <User className="h-6 w-6 text-black ml-2" />
-      </div>
+      </Link>
     </div>
   );
 }
