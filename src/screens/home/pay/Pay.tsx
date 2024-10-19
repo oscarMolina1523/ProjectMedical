@@ -28,7 +28,7 @@ const PayPage: React.FC = () => {
             <CardDescription>$9.99</CardDescription>
             <Button className="bg-brand-primary">
               <Link to="/creditCard">
-                Comprar
+                Comprar 
               </Link>
             </Button>
           </CardHeader>
