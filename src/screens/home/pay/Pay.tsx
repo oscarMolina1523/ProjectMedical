@@ -26,7 +26,11 @@ const PayPage: React.FC = () => {
           <CardHeader>
             <CardTitle className="text-dark-blue text-[1.5rem]">Version Premium</CardTitle>
             <CardDescription>$9.99</CardDescription>
-            <Button className="bg-brand-primary">Comprar</Button>
+            <Button className="bg-brand-primary">
+              <Link to="/creditCard">
+                Comprar
+              </Link>
+            </Button>
           </CardHeader>
           <CardContent className="text-left gap-2">
             <p>Escaneos Ilimitados</p>
