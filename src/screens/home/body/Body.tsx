@@ -5,7 +5,7 @@ import {
   CardDescription,
   CardFooter,
 } from "@/components/ui/card";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import QrReader from "../Scanner/Scanner";
 
 interface BodyHomeProps {
@@ -15,12 +15,24 @@ interface BodyHomeProps {
 const BodyHome: React.FC<BodyHomeProps> = ({ onFormClick }) => {
 
   const [showScanner, setShowScanner] = useState(false);
+  const [showCard, setShowCard] = useState(false);
+
+  useEffect(() => {
+    if (showScanner) {
+      const timer = setTimeout(() => {
+        setShowCard(true);
+      }, 5000); // Espera 5 segundos
+
+      return () => clearTimeout(timer); // Limpia el temporizador si el componente se desmonta
+    }
+  }, [showScanner]);
 
   const handleShowScanner = () => {
     setShowScanner(true); // Mostrar el escáner al hacer clic en el botón
   };
 
   return (
+
     <div className="flex flex-col p-2 gap-4">
       <Card>
         <CardContent>
@@ -58,6 +70,34 @@ const BodyHome: React.FC<BodyHomeProps> = ({ onFormClick }) => {
 
           {/* Solo renderiza el componente QrReader si se hizo clic en el botón */}
           {showScanner && <QrReader />}
+          {showCard && (
+            <Card>
+              <Button className="w-full bg-brand-primary">Puede Aplicarlo</Button>
+              <CardContent>
+                <p className="text-[2rem] text-dark-blue">Ingredientes</p>
+              </CardContent>
+              <CardFooter className="flex flex-col">
+                <p>Water (Aqua)</p>
+                <p>Sodium Laureth Sulfate</p>
+                <p>Cocamidopropyl Betaine</p>
+                <p>Glycerin</p>
+                <p>Fragrance (Parfum)</p>
+                <p>Citric Acid</p>
+                <p>Sodium Chloride</p>
+                <p>Phenoxyethanol</p>
+                <p>Ethylhexylglycerin</p>
+                <p>Colorants</p>
+                <p>Tetrasodium EDTA</p>
+                <p>Cocamide MIPA</p>
+                <p>DMDM Hydantoin</p>
+                <p>Disodium EDTA</p>
+                <p>Sodium Benzoate</p>
+                <p>Potassium Sorbate</p>
+                <p>Citrus Aurantium Dulcis (Orange) Peel Oil</p>
+                <p>Sodium Hydroxide</p>
+              </CardFooter>
+            </Card>
+          )}
         </CardContent>
       </Card>
     </div>

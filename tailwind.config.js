@@ -13,7 +13,7 @@ export default {
   		'light-blue': '#5ae0cc',
   		'sky-blue': '#6EACDA',
   		beige: '#E2E2B6',
-  		'brand-primary': '#00C29B',
+  		'brand-primary': '#008000',
   		'surface-neutral': '#FFFFFF',
   		'surface-background': '#F4F5F9',
   		'surface-background-2': '#EEFFF0',
