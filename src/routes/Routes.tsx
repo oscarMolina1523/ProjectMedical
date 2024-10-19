@@ -7,6 +7,7 @@ import ErrorPage from "../screens/error/Error";
 import LoginScreen from "../screens/login/Login";
 import RegisterScreen from "../screens/register/Register";
 import PayPage from "@/screens/home/pay/Pay";
+import AboutPage from "@/screens/home/about/About";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
   {
     path: "/pay",
     element: <PayPage />,
+  },
+  {
+    path: "/about",
+    element: <AboutPage />,
   },
   {
     path: "*",

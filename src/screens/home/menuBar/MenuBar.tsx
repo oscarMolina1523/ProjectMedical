@@ -16,20 +16,13 @@ const MenuBar: React.FC<MenuBarProps> = ({onMenuClick}) => {
           INNOVAMED
         </span>
       </div>
-      <div 
-        className='flex flex-row w-full h-[4rem] items-center justify-around border text-left'>
-        <span className='div'>
-          Contactos
-        </span>
-        <ChevronRight className="h-6 w-6 text-black mr-2" />
-      </div>
-      <div 
+      <Link to="/about"
         className='flex flex-row w-full h-[4rem] items-center justify-around border'>
         <span className='ml-4'>
           Acerca de nosotros
         </span>
         <ChevronRight className="h-6 w-6 text-black mr-4" />
-      </div>
+      </Link>
       <Link to="/login"
         className='flex flex-row w-full h-[4rem] items-center justify-around border text-left'>
         <span className='div'>
