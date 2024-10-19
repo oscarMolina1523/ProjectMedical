@@ -52,9 +52,9 @@ const ProfilePage: React.FC = () => {
             </CardContent>
             <CardFooter className="flex flex-row gap-4">
               <Button className="h-[3rem] text-[1.2rem] bg-dark-blue">
-                <div className="flex items-center justify-center h-full w-full">
+                <Link to="/pay" className="flex items-center justify-center h-full w-full">
                   Forma de Pago
-                </div>
+                </Link>
               </Button>
               <Button className="h-[3rem] text-[1.2rem] bg-dark-blue">
                 <Link to="/login" className="flex items-center justify-center h-full w-full">
