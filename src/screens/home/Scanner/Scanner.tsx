@@ -96,95 +96,58 @@
 // };
 
 // export default QrReader;
-
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from 'react';
 
 // Styles
-import "./QrStyless.css";
+import './QrStyless.css';
 
-// Qr Scanner
-import QrScanner from "qr-scanner";
+// ZXing Barcode Scanner
+import { BrowserMultiFormatReader } from '@zxing/library';
 
 const BarcodeReader = () => {
-  // Barcode States
-  const scanner = useRef<QrScanner>();
+  // States
   const videoEl = useRef<HTMLVideoElement>(null);
-  const barcodeBoxEl = useRef<HTMLDivElement>(null);
-  const [barcodeOn, setBarcodeOn] = useState<boolean>(true);
-
-  // Result
   const [scannedResult, setScannedResult] = useState<string | undefined>("");
 
-  // Success
-  const onScanSuccess = (result: QrScanner.ScanResult) => {
-    console.log(result); // Imprime el resultado en la consola
-    setScannedResult(result?.data); // Establece el resultado escaneado
-  };
-
-  // Fail
-  const onScanFail = (err: string | Error) => {
-    console.log(err); // Imprime el error en la consola
-  };
-
   useEffect(() => {
-    if (videoEl?.current && !scanner.current) {
-      // Instanciar el Scanner
-      scanner.current = new QrScanner(videoEl.current, onScanSuccess, {
-        onDecodeError: onScanFail,
-        preferredCamera: "environment", // Usar la cámara trasera en dispositivos móviles
-        highlightScanRegion: true, // Resaltar la región de escaneo
-        highlightCodeOutline: true, // Resaltar el contorno del código de barras
-        overlay: barcodeBoxEl.current || undefined, // Div personalizada para la región de escaneo
-      });
+    const codeReader = new BrowserMultiFormatReader();
 
-      // Iniciar el Scanner
-      scanner.current
-        .start()
-        .then(() => setBarcodeOn(true))
-        .catch((err) => {
-          if (err) setBarcodeOn(false);
+    if (videoEl.current) {
+      codeReader
+        .decodeFromVideoDevice(null, videoEl.current, (result, err) => {
+          if (result) {
+            setScannedResult(result.getText()); // Establece el resultado escaneado
+            codeReader.reset(); // Resetea el lector después de escanear
+          }
+          if (err && !(err instanceof Error)) {
+            console.error(err);
+          }
+        })
+        .catch(err => {
+          console.error(err);
         });
     }
 
     // Limpieza al desmontar
     return () => {
-      scanner.current?.stop(); // Detener el escáner si está activo
+      codeReader.reset();
     };
   }, []);
 
-  // Verificar permisos de la cámara
-  useEffect(() => {
-    if (!barcodeOn)
-      alert("Camera is blocked or not accessible. Please allow camera in your browser permissions and Reload.");
-  }, [barcodeOn]);
-
   return (
     <div className="barcode-reader">
-      <video ref={videoEl} style={{ width: "100%", height: "auto" }}></video>
-      <div 
-        ref={barcodeBoxEl} 
-        className="barcode-box" 
-        style={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          width: "256px", // Ajusta el tamaño según sea necesario
-          height: "256px", // Ajusta el tamaño según sea necesario
-          transform: "translate(-50%, -50%)", // Centrar el cuadro
-          border: "2px dashed #fff", // Estilo del contorno del cuadro de escaneo
-          zIndex: 10,
-        }}
-      />
+      <video ref={videoEl} style={{ width: '100%', height: 'auto' }}></video>
 
       {/* Mostrar el resultado escaneado si se tiene éxito */}
       {scannedResult && (
         <p
           style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
+            position: 'absolute',
+            top: '10%',
+            left: '50%',
+            transform: 'translateX(-50%)',
             zIndex: 99999,
-            color: "white",
+            color: 'white',
           }}
         >
           Scanned Result: {scannedResult}
