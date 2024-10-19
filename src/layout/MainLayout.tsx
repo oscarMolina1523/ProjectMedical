@@ -6,7 +6,7 @@ const MainLayout: React.FC = () => {
   return (
     <div className="flex flex-col w-full h-screen">
       <div className="flex h-1/2 items-center justify-center w-full p-2">
-        <img className="object-contain max-w-full max-h-full" src="src\assets\logo2.jpg" alt="this is the logo" />
+        <img className="object-contain max-w-full max-h-full" src="https://firebasestorage.googleapis.com/v0/b/libreriaestudiante-76afb.appspot.com/o/InnovaMedciculo%201.jpg?alt=media&token=343b08f3-e2b9-46f5-81c5-91211dff4871" alt="this is the logo" />
       </div>
       <div className="flex flex-col h-1/2 items-center justify-center gap-8">
         <div className=" flex flex-col gap-2">
