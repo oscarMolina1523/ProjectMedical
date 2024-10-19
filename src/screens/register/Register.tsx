@@ -13,8 +13,8 @@ const RegisterScreen: React.FC = () => {
       </div>
       <div className="flex flex-col h-2/3 p-6 gap-4">
         <Input className="h-[3rem]" type="text" placeholder="Email" />
-        <Input className="h-[3rem]" type="text" placeholder="Password" />
-        <Input className="h-[3rem]" type="text" placeholder="Confirm Password" />
+        <Input className="h-[3rem]" type="password" placeholder="Password" />
+        <Input className="h-[3rem]" type="password" placeholder="Confirm Password" />
         <div className="w-full text-end">
           <span className="text-dark-red mr-2">Forgot your password?</span>
         </div>
